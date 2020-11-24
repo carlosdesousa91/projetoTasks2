@@ -1,0 +1,24 @@
+version: "3.8"
+   
+services:
+  db:
+    image: mysql
+    container_name: mysql-container
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: centreon
+      MYSQL_DATABASE: tasks2
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: centreon
+    volumes:
+      - ./database/data:/var/lib/mysql
+    restart: always
+  api:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
