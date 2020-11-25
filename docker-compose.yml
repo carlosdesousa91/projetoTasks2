@@ -23,3 +23,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
+  frontapp:
+    build: "./frontend"
+    container_name: node-container
+    restart: always
+    volumes:
+      - ./frontend/frontendapp:/home/node/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
