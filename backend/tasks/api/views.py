@@ -9,11 +9,11 @@ from .models import Task
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    authentication_classes = [TokenAuthentication, ]
-    permission_classes = [IsAuthenticated,]
+    #authentication_classes = [TokenAuthentication, ]
+    #permission_classes = [IsAuthenticated,]
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    authentication_classes = [TokenAuthentication, ]
-    permission_classes = [IsAuthenticated,]
+    #authentication_classes = [TokenAuthentication, ]
+    #permission_classes = [IsAuthenticated,]
